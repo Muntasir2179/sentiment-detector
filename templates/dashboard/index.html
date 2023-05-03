@@ -8,9 +8,13 @@
         <div class="border p-3 shadow">
             <h4>Add Data</h4>
             <hr>
-            <form action="" method="POST">
-
-
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Text</label>
+                    <textarea name="text" rows="4" cols="50" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

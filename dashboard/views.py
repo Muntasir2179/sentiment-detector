@@ -11,6 +11,9 @@ pipe_lr = joblib.load(
 
 def index(request):
     text = 'I am feeling sad'
+    if request.method == 'POST':
+        # print('YES the method is post')
+        text = request.POST.get('text')
     prediction = pipe_lr.predict([text])
     data = pipe_lr.predict_proba([text])
     labels = pipe_lr.classes_
@@ -20,7 +23,8 @@ def index(request):
         'labels': labels,
         'probability': probability,
     }
+    print(text)
     print(prediction)
-    print(data)
+    print(probability)
     print(labels)
     return render(request, 'dashboard/index.html', context)
