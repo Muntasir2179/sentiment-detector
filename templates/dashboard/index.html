@@ -6,20 +6,20 @@
 <div class="row mt-3 pt-3">
     <div class="col-md-4">
         <div class="border p-3 shadow">
-            <h4>Add Data</h4>
+            <h4>Input Text</h4>
             <hr>
             <form action="/" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Text</label>
-                    <textarea name="text" rows="4" cols="50" class="form-control"></textarea>
+                    {% comment %} <label for="exampleInputEmail1">Text</label> {% endcomment %}
+                    <textarea name="text" rows="4" cols="50" class="form-control" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
     <div class="col-md-8">
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart" width="60%" height="50%"></canvas>
         <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -28,7 +28,7 @@
                 // labels: [{% for value in data %} '{{value.country}}', {% endfor %}],
                 labels: [{% for value in labels %}'{{value}}',{% endfor %}],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'confidences for each emotion labels',
                     data: [{% for value in probability %} {{value}}, {% endfor %}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',

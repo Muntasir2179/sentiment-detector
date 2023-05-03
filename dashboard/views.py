@@ -23,8 +23,4 @@ def index(request):
         'labels': labels,
         'probability': probability,
     }
-    print(text)
-    print(prediction)
-    print(probability)
-    print(labels)
     return render(request, 'dashboard/index.html', context)
