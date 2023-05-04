@@ -11,7 +11,6 @@
             <form action="/" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    {% comment %} <label for="exampleInputEmail1">Text</label> {% endcomment %}
                     <textarea name="text" rows="4" cols="50" class="form-control" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

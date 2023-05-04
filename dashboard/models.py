@@ -11,6 +11,9 @@ class EmotionsData(models.Model):
     love = models.FloatField()
     surprise = models.FloatField()
     fear = models.FloatField()
+    # prediction = models.CharField(max_length=50)
+    # prediction_confidence = models.FloatField()
+    # is_correct_prediction = models.BooleanField()
 
     class Meta:
         verbose_name_plural = 'Emotion Data'

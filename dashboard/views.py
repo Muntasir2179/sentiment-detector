@@ -18,8 +18,28 @@ def index(request):
     labels = pipe_lr.classes_
 
     probability = data.tolist()[0]
+
+    if request.method == 'GET':
+        emotion = EmotionsData()
+        emotion.text = text
+        emotion.anger = probability[0]
+        emotion.fear = probability[1]
+        emotion.joy = probability[2]
+        emotion.love = probability[3]
+        emotion.sadness = probability[4]
+        emotion.surprise = probability[5]
+        emotion.save()
+
     context = {
         'labels': labels,
         'probability': probability,
     }
     return render(request, 'dashboard/index.html', context)
+
+
+def make_prediction(request):
+    return render(request, 'dashboard/make_prediction.html')
+
+
+def prediction_history(request):
+    return render(request, 'dashboard/prediction_history.html')

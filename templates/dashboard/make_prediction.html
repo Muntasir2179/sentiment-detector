@@ -1,0 +1,17 @@
+{% extends 'partials/base.html' %}
+
+{% block title %}Make Prediction{% endblock title %}
+
+{% block content %}
+<div class="border mt-5 p-3 shadow">
+    <h4>Input Text</h4>
+    <hr>
+    <form action="/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea name="text" rows="4" cols="50" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock content %}
