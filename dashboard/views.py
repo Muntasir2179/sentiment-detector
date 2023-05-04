@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import CountryData, EmotionsData
+from .models import EmotionsData
 import joblib
 
 # Create your views here.
@@ -10,9 +10,8 @@ pipe_lr = joblib.load(
 
 
 def index(request):
-    text = 'I am feeling sad'
+    text = ''
     if request.method == 'POST':
-        # print('YES the method is post')
         text = request.POST.get('text')
     prediction = pipe_lr.predict([text])
     data = pipe_lr.predict_proba([text])
