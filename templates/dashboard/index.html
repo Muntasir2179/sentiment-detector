@@ -3,5 +3,19 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
-<h1>Index Page</h1>
+<h2 class="pt-5 mt-5">Introducing Emotion Classifier Model</h2>
+<hr>
+<div>
+    <p>
+        We have trained a saveral <span class="badge rounded-pill bg-light text-dark">Machine Learning Model</span> on a <a href="https://www.kaggle.com/datasets/parulpandey/emotion-dataset" class="link-info" target="blank_">kaggel dataset</a>. <br>
+        The models we trained are Naive Bayes, Support Vector Classifier(svm), Random Forest Classifier, <br>
+        Logistic Regression, K-nearest neighbours(KNN) and Dicision Tree Regression. <br>
+        The Logistic Regression model has shown better accuracy. The trained model can now predict emotion from a text sequence. <br>
+        <br><br>
+
+        <span>There are six type of emotion that the model is able to predict<span>.
+    </p>
+    <br><br>
+    <a href="{% url 'make-prediction' %}" class="btn btn-secondary btn-l" role="button">Try it</a>
+</div>
 {% endblock content %}
