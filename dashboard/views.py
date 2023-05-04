@@ -18,7 +18,11 @@ def make_prediction(request):
 
 
 def prediction_history(request):
-    return render(request, 'dashboard/prediction_history.html')
+    data = EmotionsData.objects.all()
+    context = {
+        'data': data,
+    }
+    return render(request, 'dashboard/prediction_history.html', context)
 
 
 def prediction(request):
