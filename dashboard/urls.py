@@ -7,4 +7,5 @@ urlpatterns = [
     path('prediction-history/', views.prediction_history,
          name='prediction-history'),
     path('prediction/', views.prediction, name='prediction'),
+    path('feedback/', views.feedback, name='feedback')
 ]

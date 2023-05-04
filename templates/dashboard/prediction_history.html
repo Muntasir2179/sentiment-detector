@@ -3,5 +3,38 @@
 {% block title %}Prediction History{% endblock title %}
 
 {% block content %}
-<h1>Prediction History</h1>
+<table class="table mt-5 shadow">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Text</th>
+        <th scope="col">Prediction</th>
+        <th scope="col">Confidence</th>
+        <th scope="col">User Prediction</th>
+        <th scope="col">Is Correct</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+</table>
 {% endblock content %}
