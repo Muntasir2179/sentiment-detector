@@ -9,7 +9,6 @@ class EmotionsData(models.Model):
     joy = models.FloatField()
     anger = models.FloatField()
     love = models.FloatField()
-    surprise = models.FloatField()
     fear = models.FloatField()
     prediction = models.CharField(max_length=50)
     prediction_confidence = models.FloatField()

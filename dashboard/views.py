@@ -6,7 +6,7 @@ import joblib
 
 # loading the trained model
 pipe_lr = joblib.load(
-    open('trained ml model/emotion_classifier_pipeline_lr_28_april_2023.pkl', 'rb'))
+    open('trained ml model/SVM_emotion_classifier_11_may_2023.pkl', 'rb'))
 
 
 def index(request):
@@ -34,13 +34,14 @@ def prediction(request):
     labels = pipe_lr.classes_
     probability = data.tolist()[0]
 
+    print(data)
+
     emotion_dict = {
         'anger': probability[0],
         'fear': probability[1],
         'joy': probability[2],
         'love': probability[3],
-        'sadness': probability[4],
-        'surprise': probability[5],
+        'sadness': probability[4]
     }
 
     prediction_confidence = emotion_dict[max(
