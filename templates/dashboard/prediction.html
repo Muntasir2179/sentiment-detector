@@ -20,14 +20,16 @@
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
+                        'rgba(153, 102, 255, 1)',
+                        {% comment %} 'rgba(255, 159, 64, 1)' {% endcomment %}
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
+                        'rgba(153, 102, 255, 1)',
+                        {% comment %} 'rgba(255, 159, 64, 1)' {% endcomment %}
                     ],
                     borderWidth: 1
                 }]
@@ -52,11 +54,12 @@
             <div class="form-group">
                 <select id="disabledSelect" class="form-control" name="user_prediction" required>
                   <option value="" selected disabled>Select the correct prediction</option>
-                  <option value="anger" >Anger</option>
-                  <option value="fear" >Fear</option>
-                  <option value="joy" >Joy</option>
-                  <option value="love" >Love</option>
-                  <option value="sadness" >Sadness</option>
+                  <option value="anger">Anger</option>
+                  <option value="fear">Fear</option>
+                  <option value="joy">Joy</option>
+                  <option value="love">Love</option>
+                  <option value="sadness">Sadness</option>
+                  <option value="surprise">Surprise</option>
                 </select>
             </div>
             <input class="form-control" type="text" value="{{prediction}}" name="model_prediction" hidden>
