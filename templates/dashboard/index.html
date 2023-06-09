@@ -1,5 +1,51 @@
 {% extends 'partials/base.html' %}
 
+{% block title %}Emotion Detection Dashboard{% endblock title %}
+
+{% block content %}
+<header class="header">
+    <div class="container flex">
+      <div class="text">
+        <h1 class="mb">
+          Introducing <span>Emotion</span><br />
+          Classifier Model
+        </h1>
+        <p class="mb sub-heading">
+          We have trained a several Machine Leading Model on a <a href="https://www.kaggle.com/datasets/parulpandey/emotion-dataset" class="link-info" target="blank_">kaggel dataset</a>.
+          <br />The models we trained are <strong>Naive Bayes</strong>,
+          <strong>Support Vector Classifier(svn)</strong>, <strong>Random Forest Classifier</strong>,
+          <strong>Logistic Regression</strong>, <strong>K-nearest neighbours(KNN)</strong> and
+          <strong>Decision Tree Regression</strong>. <br />The Logistic Regression model has shown better accuracy.
+          The trained model can now predict emotion from a text sequence. <br />There are six type of emotion that the
+          model is able to predict
+        </p>
+
+        <a href="{% url 'make-prediction' %}" class="btn mt">Try Now</a>
+      </div>
+
+      <div class="visual">
+        <img src="/static/img/ai-logo.png" alt="" />
+      </div>
+    </div>
+</header>
+
+
+<footer class="footer">
+    <div class="container flex">
+      <p class="tertiary">&copy; 2023 ECM. All Rights Reserved.</p>
+    </div>
+</footer>
+{% endblock content %}
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'partials/base.html' %}
+
 {% block title %}Dashboard{% endblock title %}
 
 {% block content %}
@@ -18,4 +64,4 @@
     <br><br>
     <a href="{% url 'make-prediction' %}" class="btn btn-secondary btn-l" role="button">Try it</a>
 </div>
-{% endblock content %}
+{% endblock content %} {% endcomment %}
