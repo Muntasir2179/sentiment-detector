@@ -14,10 +14,10 @@
   <body>
     <div id="page_wrapper">
         <div id="sidenav" class="sidenav">
-            <div class="sidenav_header">
+            <div class="sidenav_header sidenav_alt">
                 <div class="logo_section">
                     <i class="bx bxl-foursquare"></i>
-                    <h3>ECM</h3>
+                    <h3 class="logo-alt">ECM</h3>
                 </div>
                 <a href="/prediction/" class="sidenav_link">
                     <i class="bx bx-folder"></i>
@@ -28,7 +28,7 @@
                     <h3>History</h3>
                 </a>
             </div>
-            <div class="sidenav_footer">
+            <div class="sidenav_footer sidenav_alt">
                 <a href="/admin/" class="sidenav_link">
                     <i class="bx bx-rocket"></i>
                     <h3>Admin Section</h3>
@@ -107,7 +107,7 @@
                         {% for key, value in emotion_dict.items %}
                         <input type="number" step="any" value="{{value}}" name="{{key}}" hidden>
                         {% endfor %}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
                     </form>
                 </div>
             </div>
@@ -115,6 +115,6 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/dist/boxicons.js"></script>
-    <script src="/static/js/main.js"></>
+    <script src="/static/js/main.js"></script>
   </body>
 </html>

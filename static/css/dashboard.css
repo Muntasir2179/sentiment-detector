@@ -3,7 +3,8 @@
 :root {
   --accent-clr: #f2f2f2;
   --accent-dark: #fff;
-  --accent-light: rgba(155, 155, 155, 0.1);
+  /* --accent-light: rgba(155, 155, 155, 0.1); */
+  --accent-light: rgba(118, 107, 107, 0.1);
   --text: black;
 }
 
@@ -20,6 +21,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* .dark_mode {
@@ -33,7 +35,6 @@ body {
   height: 100vh;
   display: grid;
   grid-template-columns: 260px 1fr;
-  font-family: "Lato", sans-serif;
   box-sizing: border-box;
   background-color: var(--accent-dark);
 }
@@ -48,17 +49,16 @@ body {
   justify-content: space-between;
 }
 
-.sidenav_link h3 {
-  font-size: 22px !important;
-  /* margin-bottom: 0; */
-}
-
 .sidenav_link {
   display: flex;
   align-items: center;
   padding: 0 10px;
-  /* padding: 10px; */
-  margin-bottom: 2px;
+  margin-bottom: 5px;
+}
+
+.sidenav_alt .sidenav_link {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.2;
 }
 
 .sidenav_link:hover {
@@ -75,6 +75,19 @@ body {
 
 .sidenav_link i {
   color: var(--text);
+}
+
+.sidenav_link h3 {
+  font-size: 17px !important;
+  margin: 10px 0;
+}
+
+.sidenav_alt .sidenav_link h3 {
+  font-weight: 900;
+}
+
+.sidenav_alt .sidenav_link .bx-file {
+  margin-top: -2px;
 }
 
 .sidenav_link:hover>h3,
@@ -103,7 +116,7 @@ body {
 #nav_collapse_btn {
   position: absolute;
   top: 72px;
-  left: 240px;
+  left: 220px;
   transition: 250ms ease-out;
   background-color: var(--accent-dark);
   border-radius: 99px;
@@ -114,6 +127,8 @@ body {
   height: 40px;
   width: 40px;
   cursor: pointer;
+  border: 2px solid black;
+  padding: 18px;
 }
 
 #nav_collapse_btn>i {
@@ -236,11 +251,11 @@ p {
 }
 
 #search-wrapper {
-  width: 650px;
+  width: 850px;
   height: fit-content;
   background: #fff;
   padding: 1em;
-  margin: 1em auto;
+  margin: 2em auto;
   border-top: 5px solid #191d19;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
@@ -264,8 +279,8 @@ button {
   display: inline-block;
   border-radius: 3px;
   border: none;
-  font-size: 0.9rem;
-  padding: 0.6rem 1em;
+  font-size: 1.1rem;
+  padding: 0.6rem 2em;
   color: white;
   margin: 0 0.25rem;
   text-align: center;
@@ -285,4 +300,12 @@ button:hover {
 
 .history-wrapper {
   padding: 20px;
+}
+
+
+/* Custom Styles  */
+.logo-alt {
+  margin-bottom: 0;
+  padding-top: 2px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
