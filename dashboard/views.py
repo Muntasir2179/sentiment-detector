@@ -6,7 +6,7 @@ import joblib
 
 # loading the trained model
 pipe_lr = joblib.load(
-    open('trained ml model/91%_logistic_regression_emotion_classifier_19_may_2023.pkl', 'rb'))
+    open('trained ml model/91%_logistic_regression_emotion_classifier_16_June_2023.pkl', 'rb'))
 
 
 def index(request):
