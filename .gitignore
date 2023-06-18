@@ -1,0 +1,4 @@
+account.txt
+.vscode
+db.sqlite3
+__pycache__
