@@ -29,7 +29,7 @@ def prediction(request):
     text = ''
     if request.method == 'POST':
         text = request.POST.get('text')
-    prediction = pipe_lr.predict([text])
+    prediction = pipe_lr.predict([text])[0]
     data = pipe_lr.predict_proba([text])
     labels = pipe_lr.classes_
     probability = data.tolist()[0]

@@ -14,27 +14,25 @@
   <body>
     <div id="page_wrapper">
         <div id="sidenav" class="sidenav">
-            <div class="sidenav_header sidenav_alt">
+            <div class="sidenav_header">
                 <div class="logo_section">
-                    <i class="bx bxl-foursquare"></i>
-                    <h3 class="logo-alt">ECM</h3>
+                    <a href="{% url 'index' %}"><i class="bx bxl-foursquare"></i>ECM</a>
                 </div>
-                <a href="/prediction/" class="sidenav_link">
+                <a href="{% url 'make-prediction' %}" class="sidenav_link active">
                     <i class="bx bx-folder"></i>
                     <h3>Make Prediction</h3>
                 </a>
-                <a href="{% url 'prediction-history' %}" class="sidenav_link active">
+                <a href="{% url 'prediction-history' %}" class="sidenav_link">
                     <i class="bx bx-file"></i>
                     <h3>History</h3>
                 </a>
             </div>
-            <div class="sidenav_footer sidenav_alt">
-                <a href="/admin/" class="sidenav_link">
+            <div class="sidenav_footer">
+                <a href="/admin/" class="sidenav_link" target="blank_">
                     <i class="bx bx-rocket"></i>
                     <h3>Admin Section</h3>
                 </a>
             </div>
-
             <button id="nav_collapse_btn">
                 <i class="bx bxs-chevrons-left"></i>
             </button>
@@ -110,6 +108,12 @@
                         <button type="submit" class="btn btn-success btn-lg">Submit</button>
                     </form>
                 </div>
+            </div>
+
+            <div class="border-top my-3 mt-5"></div>
+
+            <div class="row mt-5 pl-3">
+                <h4>Prediction labels is <span class="badge badge-info pt-2 pb-2 pr-2 pl-2">{{prediction}}</span></h4>
             </div>
         </div>
     </div>
