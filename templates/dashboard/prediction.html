@@ -1,124 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/dashboard.css" />
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+{% extends 'partials/sidebar.html' %}
 
-    <title>Make Prediction</title>
-  </head>
-  <body>
-    <div id="page_wrapper">
-        <div id="sidenav" class="sidenav">
-            <div class="sidenav_header">
-                <div class="logo_section">
-                    <a href="{% url 'index' %}"><i class="bx bxl-foursquare"></i>ECM</a>
-                </div>
-                <a href="{% url 'make-prediction' %}" class="sidenav_link active">
-                    <i class="bx bx-folder"></i>
-                    <h3>Make Prediction</h3>
-                </a>
-                <a href="{% url 'prediction-history' %}" class="sidenav_link">
-                    <i class="bx bx-file"></i>
-                    <h3>History</h3>
-                </a>
-            </div>
-            <div class="sidenav_footer">
-                <a href="/admin/" class="sidenav_link" target="blank_">
-                    <i class="bx bx-rocket"></i>
-                    <h3>Admin Section</h3>
-                </a>
-            </div>
-            <button id="nav_collapse_btn">
-                <i class="bx bxs-chevrons-left"></i>
-            </button>
+{% block styles %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+{% endblock styles %}
+
+{% block title %}Make Prediction{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-8">
+            <canvas id="myChart"></canvas>
+            <script>
+                var ctx = document.getElementById("myChart").getContext("2d");
+                var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: [{% for value in labels %}'{{value}}',{% endfor %}],
+                    datasets: [
+                    {
+                        label: "Confidence",
+                        data: [{% for value in probability %} {{value}}, {% endfor %}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }],
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                },
+            });
+            </script>
         </div>
 
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-md-8">
-                    <canvas id="myChart"></canvas>
-                    <script>
-                        var ctx = document.getElementById("myChart").getContext("2d");
-                        var myChart = new Chart(ctx, {
-                        type: "bar",
-                        data: {
-                            labels: [{% for value in labels %}'{{value}}',{% endfor %}],
-                            datasets: [
-                            {
-                                label: "Completed Tasks",
-                                data: [{% for value in probability %} {{value}}, {% endfor %}],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }],
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
-                        },
-                    });
-                    </script>
+        <div class="col-md-4">
+            <form action="/feedback/" method="POST">
+                {% csrf_token %}
+                <legend>User Feedback</legend>
+                <div class="form-group">
+                    <select id="disabledSelect" class="form-control" name="user_prediction" required>
+                    <option value="" selected disabled>Select the correct prediction</option>
+                    <option value="anger">Anger</option>
+                    <option value="fear">Fear</option>
+                    <option value="joy">Joy</option>
+                    <option value="love">Love</option>
+                    <option value="sadness">Sadness</option>
+                    <option value="surprise">Surprise</option>
+                    </select>
                 </div>
-    
-                <div class="col-md-4">
-                    <form action="/feedback/" method="POST">
-                        {% csrf_token %}
-                        <legend>User Feedback</legend>
-                        <div class="form-group">
-                            <select id="disabledSelect" class="form-control" name="user_prediction" required>
-                            <option value="" selected disabled>Select the correct prediction</option>
-                            <option value="anger">Anger</option>
-                            <option value="fear">Fear</option>
-                            <option value="joy">Joy</option>
-                            <option value="love">Love</option>
-                            <option value="sadness">Sadness</option>
-                            <option value="surprise">Surprise</option>
-                            </select>
-                        </div>
-                        <input class="form-control" type="text" value="{{prediction}}" name="model_prediction" hidden>
-                        <input class="form-control" type="textarea" value="{{input_text}}" name="input_text" hidden>
-                        <input type="number" step="any" value="{{prediction_confidence}}" name="prediction_confidence" hidden>
-                        {% for key, value in emotion_dict.items %}
-                        <input type="number" step="any" value="{{value}}" name="{{key}}" hidden>
-                        {% endfor %}
-                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="border-top my-3 mt-5"></div>
-
-            <div class="row mt-5 pl-3">
-                <h4>Prediction labels is <span class="badge badge-info pt-2 pb-2 pr-2 pl-2">{{prediction}}</span></h4>
-            </div>
+                <input class="form-control" type="text" value="{{prediction}}" name="model_prediction" hidden>
+                <input class="form-control" type="textarea" value="{{input_text}}" name="input_text" hidden>
+                <input type="number" step="any" value="{{prediction_confidence}}" name="prediction_confidence" hidden>
+                {% for key, value in emotion_dict.items %}
+                <input type="number" step="any" value="{{value}}" name="{{key}}" hidden>
+                {% endfor %}
+                <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            </form>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/dist/boxicons.js"></script>
-    <script src="/static/js/main.js"></script>
-  </body>
-</html>
+    <div class="border-top my-3 mt-5"></div>
+
+    <div class="row mt-5 pl-3">
+        <h4>Prediction labels is <span class="badge badge-info pt-2 pb-2 pr-2 pl-2">{{prediction}}</span></h4>
+    </div>
+</div>
+{% endblock content %}
