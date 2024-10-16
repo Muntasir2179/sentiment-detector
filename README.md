@@ -155,6 +155,7 @@ We have used several python libraries and frameworks for different purposes.
 
 - [pandas, numpy, matplotlib, searborn] - These are used for exploratory data analysis.
 - [scikit-learn] - It is a machine learning frameworks equipped with tools to build models. We have used it in data preprocessing and result analysis. All the evaluation parameters values are produced with the help of this library.
+- [tensorflow] - It is a framework that is used to finetune BERT model.
 - [django] - We have buid a web application to deploy our trained model.
 - [HTML, CSS, Bootstrap] - Website frontend design.
 
